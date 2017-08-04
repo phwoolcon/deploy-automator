@@ -1,0 +1,11 @@
+{
+    "require": {
+        "phwoolcon/deploy-automator": "~1.0"
+    },
+    "phwoolcon-packages": [
+        {
+            "name": "phwoolcon/deploy-automator",
+            "url": "git@github.com:phwoolcon/deploy-automator.git"
+        }
+    ]
+}

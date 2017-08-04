@@ -1,0 +1,31 @@
+# The preparation section
+# Parameters for the `deploy server`
+prepare:
+  local: true
+  stage: prepare
+  # Change to your real git repo
+  repository: git@example.com:example/project.git
+  # Change to the branch you want to deploy, for example, `release`, `staging`, or `production`
+  branch: release
+
+# The remote section(s)
+# Parameters for the `real server`
+# You may define multiple servers by duplicating this section
+remote-1:
+  # Change to your real host, ip or domain name
+  hostname: yoursite.com
+  user: deployer
+  become: www-data
+  # The SSH port on the remote server
+#  port: 22
+  # The SSH client config on the `deploy server`
+#  configFile: ~/.ssh/config
+  # The SSH private key on the `deploy server`
+#  identityFile: ~/.ssh/id_rsa
+  forwardAgent: true
+  multiplexing: true
+  sshOptions:
+    UserKnownHostsFile: /dev/null
+    StrictHostKeyChecking: no
+  stage: production
+  deploy_path: /srv/http/example.com
