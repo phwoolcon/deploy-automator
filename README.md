@@ -22,7 +22,6 @@ composer update
 ```bash
 ssh-keygen -N "" -t rsa -b 4096 -C "deployer"
 ```
-This will generates
 
 ### Remote Server User
 Create user `deployer` on the remote server to receive code pushes (via `rsync`, using `ssh` connection).
