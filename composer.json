@@ -1,6 +1,24 @@
 {
+    "name": "phwoolcon/deploy-automator",
+    "description": "Deploy Automator for Phwoolcon Projects",
+    "keywords": ["phwoolcon", "deployer"],
+    "type": "library",
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "Christopher CHEN",
+            "email": "fishdrowned@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "require": {
         "deployer/recipes": "~4.0",
         "sensiolabs/ansi-to-html": "~1.1"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
     }
 }
