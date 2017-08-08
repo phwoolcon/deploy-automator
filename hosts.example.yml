@@ -2,7 +2,6 @@
 # Parameters for the `deploy server`
 prepare:
   local: true
-  stage: prepare
   # Change to your real git repo
   repository: git@example.com:example/project.git
   # Change to the branch you want to deploy, for example, `release`, `staging`, or `production`
