@@ -14,7 +14,7 @@ remote-1:
   # Change to your real host, ip or domain name
   hostname: yoursite.com
   user: deployer
-  become: www-data
+  http_user: www-data
   # The SSH port on the remote server
 #  port: 22
   # The SSH client config on the `deploy server`

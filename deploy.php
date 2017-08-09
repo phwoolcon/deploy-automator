@@ -7,7 +7,6 @@ require 'vendor/deployer/recipes/recipe/rsync.php';
 
 // Configuration
 
-set('git_tty', true);
 set('git_cache', true);
 set('shared_files', []);
 set('shared_dirs', []);
@@ -27,10 +26,10 @@ set('rsync', [
     'filter' => [],
     'filter-file' => false,
     'filter-perdir' => false,
-    'flags' => 'auz',
+    'flags' => 'auzv',
     'options' => [
         'delete',
-        'rsync-path="sudo -u www-data rsync"',
+        'rsync-path="sudo -u {{http_user}} rsync"',
     ],
     'timeout' => null,
     'tty' => true,
@@ -49,31 +48,29 @@ task('deploy:rsync', function () {
         $dst = $dst();
     }
     cd($dst);
-    run('bin/dump-autoload');
-    run('bin/cli migrate:up');
-    run('bin/dump-autoload');
+    run('sudo -Hu {{http_user}} bin/dump-autoload', ['tty' => true]);
+    run('sudo -Hu {{http_user}} bin/cli migrate:up', ['tty' => true]);
+    run('sudo -Hu {{http_user}} bin/dump-autoload', ['tty' => true]);
 });
 
 task('local:prepare_done', function () {
     writeln('<info>Local preparation Ok</info>');
 });
 
-task('git:last_ref', function () {
+task('git:changes', function () {
     if (!is_dir(__DIR__ . '/working_dir/current')) {
         return;
     }
     cd('working_dir/current');
-    set('last_ref', trim(run('git rev-parse HEAD')->getOutput()));
-});
-
-task('git:ref', function () {
-    if (!is_dir(__DIR__ . '/working_dir/current')) {
-        return;
+    $lastRef = false;
+    if (has('previous_release')) {
+        cd('{{previous_release}}');
+        $lastRef = trim(run('git rev-parse HEAD')->getOutput());
+        cd('working_dir/current');
+        run('rsync -a --delete {{previous_release}}/ {{release_path}}/');
+        run("git pull origin {{branch}} --rebase", ['tty' => true]);
     }
-    cd('working_dir/current');
-    $branch = get('branch');
-    run("git reset --hard origin/{$branch}");
-    if ($lastRef = get('last_ref')) {
+    if ($lastRef) {
         run($gitLog = "git log --pretty=format:'%C(green)%h%C(reset) [%C(yellow)%ci%C(reset)] - " .
             "%an <%ae>%n%C(bold blue)%s%C(reset)%n%w(0,2,2)%b%n' {$lastRef}..HEAD", ['tty' => true]);
         $changes = run($gitLog)->getOutput();
@@ -93,14 +90,13 @@ desc('Prepare source code locally');
 task('local:prepare', [
     'deploy:prepare',
     'deploy:lock',
-    'git:last_ref',
     'deploy:release',
     'deploy:update_code',
     'deploy:clear_paths',
     'deploy:symlink',
     'deploy:unlock',
     'cleanup',
-    'git:ref',
+    'git:changes',
     'local:prepare_done',
 ])->onStage('prepare');
 
