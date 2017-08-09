@@ -5,6 +5,8 @@ namespace Deployer;
 require 'recipe/common.php';
 require 'vendor/deployer/recipes/recipe/rsync.php';
 
+define('WORKSPACE', empty($_SERVER['WORKSPACE']) ? __DIR__ . '/workspace' : $_SERVER['WORKSPACE']);
+
 // Configuration
 
 set('git_cache', true);
@@ -12,15 +14,15 @@ set('shared_files', []);
 set('shared_dirs', []);
 set('writable_dirs', []);
 
-inventory('hosts.yml');
+inventory(WORKSPACE . '/hosts.yml');
 
 host('prepare')
     ->stage('prepare')
-    ->set('deploy_path', __DIR__ . '/working_dir');
+    ->set('deploy_path', WORKSPACE);
 
 set('rsync', [
     'include' => [],
-    'exclude-file' => __DIR__ . '/working_dir/current/deployignore',
+    'exclude-file' => WORKSPACE . '/current/deployignore',
     'exclude' => ['.git'],
     'include-file' => false,
     'filter' => [],
@@ -35,7 +37,7 @@ set('rsync', [
     'tty' => true,
 ]);
 
-set('rsync_src', __DIR__ . '/working_dir/current');
+set('rsync_src', WORKSPACE . '/current');
 set('rsync_dest', '{{deploy_path}}');
 
 // Tasks
@@ -58,15 +60,15 @@ task('local:prepare_done', function () {
 });
 
 task('git:changes', function () {
-    if (!is_dir(__DIR__ . '/working_dir/current')) {
+    if (!is_dir(get('rsync_src'))) {
         return;
     }
-    cd('working_dir/current');
+    cd('{{rsync_src}}');
     $lastRef = false;
     if (has('previous_release')) {
         cd('{{previous_release}}');
         $lastRef = trim(run('git rev-parse HEAD')->getOutput());
-        cd('working_dir/current');
+        cd('{{rsync_src}}');
         run('rsync -a --delete {{previous_release}}/ {{release_path}}/');
         run("git pull origin {{branch}} --rebase", ['tty' => true]);
     }

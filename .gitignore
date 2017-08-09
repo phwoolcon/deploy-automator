@@ -2,5 +2,5 @@
 /.idea/
 /vendor/
 /ignore/
-/working_dir/
+/workspace/
 /hosts.yml

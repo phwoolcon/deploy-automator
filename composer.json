@@ -16,6 +16,9 @@
         "deployer/recipes": "dev-master",
         "sensiolabs/ansi-to-html": "~1.1"
     },
+    "bin": [
+        "bin/deploy"
+    ],
     "extra": {
         "branch-alias": {
             "dev-master": "1.0.x-dev"

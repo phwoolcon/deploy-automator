@@ -4,7 +4,7 @@
 1. Git push to `release` (or `staging`, `production`) branch;
 1. Captures the push webhook (TODO);
 1. Invoke `dep local:prepare prepare` to pull the codes;
-1. Invoke `rsync` to push codes under `./working_dir/current` to the remote server(s);
+1. Invoke `rsync` to push codes under `./workspace/current` to the remote server(s);
 1. Invoke `bin/cli migrate:up` and `bin/dump-autoload` on the remote server(s).
 
 ## Usage
