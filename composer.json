@@ -15,6 +15,15 @@
     "require": {
         "deployer/recipes": "dev-master"
     },
+    "autoload": {
+        "psr-4": {
+            "Phwoolcon\\DeployAutomator\\": "src",
+            "Phwoolcon\\DeployAutomator\\Tests\\": "tests"
+        },
+        "exclude-from-classmap": [
+            "/tests/"
+        ]
+    },
     "bin": [
         "bin/deploy"
     ],
