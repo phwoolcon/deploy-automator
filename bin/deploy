@@ -19,7 +19,12 @@ LOGS_DIR=${WORKSPACE}/logs
 if [[ ! -d ${LOGS_DIR} ]]; then
     mkdir -p "${LOGS_DIR}"
 fi
-LOG_FILE=${LOGS_DIR}/$(date +"%Y%m%d-%H%M%S").log
+
+if [[ -z ${DEPLOY_ID} ]]; then
+    DEPLOY_ID=$(date +"%Y%m%d-%H%M%S")
+fi
+
+LOG_FILE=${LOGS_DIR}/${DEPLOY_ID}.log
 
 # Run the deployment and write all TTY outputs to log file
 script -q -c 'dep -v local:prepare prepare && dep -vvv deploy production' "${LOG_FILE}"
