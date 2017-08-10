@@ -5,6 +5,7 @@ cd "$( dirname "$( dirname "${BASH_SOURCE[0]}" )" )"
 if [[ ! -d vendor ]]; then
     cd ..
 fi
+export BASE_DIR=`pwd`
 
 # Detect workspace by $1, if not specified, the default is "workspace"
 if [[ $1 && -d $1 ]]; then

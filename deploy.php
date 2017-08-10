@@ -2,10 +2,11 @@
 
 namespace Deployer;
 
-require 'recipe/common.php';
-require 'vendor/deployer/recipes/recipe/rsync.php';
+define('BASE_DIR', empty($_SERVER['BASE_DIR']) ? __DIR__ : $_SERVER['BASE_DIR']);
+define('WORKSPACE', empty($_SERVER['WORKSPACE']) ? BASE_DIR . '/workspace' : $_SERVER['WORKSPACE']);
 
-define('WORKSPACE', empty($_SERVER['WORKSPACE']) ? __DIR__ . '/workspace' : $_SERVER['WORKSPACE']);
+require 'recipe/common.php';
+require BASE_DIR . '/vendor/deployer/recipes/recipe/rsync.php';
 
 // Configuration
 
@@ -73,8 +74,8 @@ task('git:changes', function () {
         run("git pull origin {{branch}} --rebase", ['tty' => true]);
     }
     if ($lastRef) {
-        run($gitLog = "git log --pretty=format:'%C(green)%h%C(reset) [%C(yellow)%ci%C(reset)] - " .
-            "%an <%ae>%n%C(bold blue)%s%C(reset)%n%w(0,2,2)%b%n' {$lastRef}..HEAD", ['tty' => true]);
+        $gitLog = "git log --pretty=format:'%C(green)%h%C(reset) [%C(yellow)%ci%C(reset)] - " .
+            "%an <%ae>%n%C(bold blue)%s%C(reset)%n%w(0,2,2)%b%n' {$lastRef}..HEAD";
         $changes = run($gitLog)->getOutput();
         if (!trim($changes)) {
             run('git branch -vv', ['tty' => true]);
