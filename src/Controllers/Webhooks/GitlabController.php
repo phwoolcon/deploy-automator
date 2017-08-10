@@ -139,7 +139,7 @@ class GitlabController extends Controller
             return null;
         }
         // TODO implement project model and project management UI
-        if (!$project = Config::get('deploy.projects.' . $projectId)) {
+        if (!$project = Config::get('deploy.projects.' . str_replace('.', '_', $projectId))) {
             return null;
         }
         if (fnGet($project, 'gitlab-token') != $token) {
@@ -155,7 +155,7 @@ class GitlabController extends Controller
         if (json_last_error() !== JSON_ERROR_NONE) {
             return null;
         }
-        return Payload::create($json);
+        return Payload::create($json ?: []);
     }
 
     /**

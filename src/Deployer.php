@@ -43,10 +43,10 @@ class Deployer
         return static::$instance;
     }
 
-    public static function handleQueueJob($job, array $payload)
+    public static function handleQueueJob($job, $payload)
     {
         static::$instance === null and static::$instance = static::$di->getShared('deployer');
-        call_user_func_array([static::$instance, 'deploy'], $payload);
+        call_user_func_array([static::$instance, 'deploy'], unserialize($payload));
     }
 
     /**
@@ -56,11 +56,15 @@ class Deployer
     public function deploy($project, $payload)
     {
         $command = $_SERVER['PHWOOLCON_ROOT_PATH'] . '/vendor/bin/deploy';
-        $workspace = escapeshellarg($payload->getData('workspace'));
+        $workspace = $payload->getData('workspace');
+        if (!is_dir($workspace)) {
+            mkdir($workspace, 0777, true);
+        }
         foreach ((array)$payload->getData('env') as $k => $v) {
             putenv("{$k}={$v}");
         }
-        system("{$command} {$workspace} &");
+        $workspace = escapeshellarg($workspace);
+        system("{$command} {$workspace} > /dev/null 2>&1");
     }
 
     /**
@@ -72,7 +76,7 @@ class Deployer
     {
         /* @var DbQueue $queue */
         $queue = Queue::connection('deployer');
-        $queue->push([static::class, 'handleQueueJob'], func_get_args());
+        $queue->push([static::class, 'handleQueueJob'], serialize(func_get_args()));
         return $this;
     }
 
