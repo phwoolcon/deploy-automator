@@ -13,8 +13,7 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
-        "deployer/recipes": "dev-master",
-        "sensiolabs/ansi-to-html": "~1.1"
+        "deployer/recipes": "dev-master"
     },
     "bin": [
         "bin/deploy"
