@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+cd "$( dirname "$( dirname "${BASH_SOURCE[0]}" )" )"
+
+# Detect base dir
+if [[ ! -d vendor ]]; then
+    cd ..
+fi
+export BASE_DIR=`pwd`
+
+# Detect workspace by $1, if not specified, the default is "workspace"
+if [[ $1 && -d $1 ]]; then
+    cd $1
+    export WORKSPACE=`pwd`
+else
+    export WORKSPACE=`pwd`/workspace
+fi
+
+# Prepare log file
+LOGS_DIR=${WORKSPACE}/logs
+if [[ ! -d ${LOGS_DIR} ]]; then
+    mkdir -p "${LOGS_DIR}"
+fi
+
+if [[ -z ${DEPLOY_ID} ]]; then
+    DEPLOY_ID=$(date +"%Y%m%d-%H%M%S")
+fi
+
+LOG_FILE=${LOGS_DIR}/${DEPLOY_ID}.log
+
+# Run the deployment and write all TTY outputs to log file
+script -q -c 'dep -v local:prepare prepare && dep -vvv deploy production' "${LOG_FILE}"
+
+# Unlock the workspace no matter success or not
+dep deploy:unlock prepare > /dev/null

@@ -1,0 +1,35 @@
+{
+    "name": "phwoolcon/deploy-automator",
+    "description": "Deploy Automator for Phwoolcon Projects",
+    "keywords": ["phwoolcon", "deployer"],
+    "type": "library",
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "Christopher CHEN",
+            "email": "fishdrowned@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "deployer/recipes": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "Phwoolcon\\DeployAutomator\\": "src",
+            "Phwoolcon\\DeployAutomator\\Tests\\": "tests"
+        },
+        "exclude-from-classmap": [
+            "/tests/"
+        ]
+    },
+    "bin": [
+        "bin/deploy"
+    ],
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    }
+}
