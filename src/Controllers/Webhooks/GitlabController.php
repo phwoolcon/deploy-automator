@@ -110,7 +110,7 @@ class GitlabController extends Controller
 
         $payload = $this->parseJsonPayload($this->getPhpInput());
         if ('push' != $payload->getData('object_kind')) {
-            $this->jsonApiReturnMeta(['status' => 'ignored']);
+            return $this->jsonApiReturnMeta(['status' => 'ignored']);
         }
 
         // Verify branch
@@ -119,7 +119,7 @@ class GitlabController extends Controller
 
         // Skip non-listening branches
         if ($ref != $payload->getData('ref')) {
-            $this->jsonApiReturnMeta(['status' => 'ignored']);
+            return $this->jsonApiReturnMeta(['status' => 'ignored']);
         }
         $workspace = $this->getWorkspace();
         $payload->setData('workspace', $workspace . '/' . $project->getData('id'));
@@ -130,7 +130,7 @@ class GitlabController extends Controller
         ];
         $payload->setData('env', $env);
         $this->createDeployment($project, $payload);
-        $this->jsonApiReturnMeta(['status' => 'ok']);
+        return $this->jsonApiReturnMeta(['status' => 'ok']);
     }
 
     protected function findAndVerifyProject($projectId, $token)
