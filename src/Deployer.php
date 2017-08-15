@@ -4,6 +4,7 @@ namespace Phwoolcon\DeployAutomator;
 
 use Config;
 use Phalcon\Di;
+use Phwoolcon\Exception\QueueException;
 use Phwoolcon\Payload;
 use Phwoolcon\Queue\Adapter\DbQueue;
 use Queue;
@@ -64,7 +65,10 @@ class Deployer
             putenv("{$k}={$v}");
         }
         $workspace = escapeshellarg($workspace);
-        system("{$command} {$workspace} > /dev/null 2>&1");
+        exec("{$command} {$workspace} > /dev/null 2>&1", $output, $exitCode);
+        if ($exitCode) {
+            throw new QueueException("Deploy error on project '{$project->getId()}'", $exitCode);
+        }
     }
 
     /**
