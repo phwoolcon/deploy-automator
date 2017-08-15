@@ -4,6 +4,7 @@ namespace Phwoolcon\DeployAutomator;
 
 use Config;
 use Phalcon\Di;
+use Phwoolcon\DeployAutomator\Model\Project;
 use Phwoolcon\Exception\QueueException;
 use Phwoolcon\Payload;
 use Phwoolcon\Queue\Adapter\DbQueue;
@@ -51,7 +52,7 @@ class Deployer
     }
 
     /**
-     * @param Payload $project
+     * @param Project $project
      * @param Payload $payload
      */
     public function deploy($project, $payload)
@@ -72,7 +73,7 @@ class Deployer
     }
 
     /**
-     * @param Payload $project
+     * @param Project $project
      * @param Payload $payload
      * @return $this
      */

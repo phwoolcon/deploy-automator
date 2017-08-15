@@ -3,9 +3,9 @@
 prepare:
   local: true
   # Change to your real git repo
-  repository: git@example.com:example/project.git
+  repository: {{project_repository}}
   # Change to the branch you want to deploy, for example, `release`, `staging`, or `production`
-  branch: release
+  branch: {{project_branch}}
 
 # The remote section(s)
 # Parameters for the `real server`

@@ -2,9 +2,9 @@
 
 namespace Phwoolcon\DeployAutomator\Controllers\Webhooks;
 
-use Config;
 use Phwoolcon\Controller;
 use Phwoolcon\DeployAutomator\Deployer;
+use Phwoolcon\DeployAutomator\Model\Project;
 use Phwoolcon\Payload;
 
 class GitlabController extends Controller
@@ -110,7 +110,7 @@ class GitlabController extends Controller
 
         $payload = $this->parseJsonPayload($this->getPhpInput());
         if ('push' != $payload->getData('object_kind')) {
-            return $this->jsonApiReturnMeta(['status' => 'ignored']);
+            return $this->jsonApiReturnMeta(['status' => 'ignored', 'why' => 'Not push event']);
         }
 
         // Verify branch
@@ -119,7 +119,7 @@ class GitlabController extends Controller
 
         // Skip non-listening branches
         if ($ref != $payload->getData('ref')) {
-            return $this->jsonApiReturnMeta(['status' => 'ignored']);
+            return $this->jsonApiReturnMeta(['status' => 'ignored', 'why' => 'Branch not match']);
         }
         $workspace = $this->getWorkspace();
         $payload->setData('workspace', $workspace . '/' . $project->getProjectId());
@@ -138,15 +138,14 @@ class GitlabController extends Controller
         if (empty($projectId) || empty($token)) {
             return null;
         }
-        // TODO implement project model and project management UI
-        if (!$project = Config::get('deploy.projects.' . str_replace('.', '_', $projectId))) {
+        // TODO implement project management UI
+        if (!$project = Project::findFirstSimple(['project_id' => $projectId])) {
             return null;
         }
-        if (fnGet($project, 'gitlab-token') != $token) {
+        if ($project->getGitlabToken() != $token) {
             return null;
         }
-        $project['project_id'] = $projectId;
-        return Payload::create($project);
+        return $project;
     }
 
     protected function parseJsonPayload($input)
