@@ -67,7 +67,7 @@ class Deployer
         $workspace = escapeshellarg($workspace);
         exec("{$command} {$workspace} > /dev/null 2>&1", $output, $exitCode);
         if ($exitCode) {
-            throw new QueueException("Deploy error on project '{$project->getId()}'", $exitCode);
+            throw new QueueException("Deploy error on project '{$project->getProjectId()}'", $exitCode);
         }
     }
 

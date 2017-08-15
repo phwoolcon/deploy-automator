@@ -114,7 +114,7 @@ class GitlabController extends Controller
         }
 
         // Verify branch
-        $branch = $project->getData('branch');
+        $branch = $project->getBranch();
         $ref = "refs/heads/{$branch}";
 
         // Skip non-listening branches
@@ -122,7 +122,7 @@ class GitlabController extends Controller
             return $this->jsonApiReturnMeta(['status' => 'ignored']);
         }
         $workspace = $this->getWorkspace();
-        $payload->setData('workspace', $workspace . '/' . $project->getData('id'));
+        $payload->setData('workspace', $workspace . '/' . $project->getProjectId());
         $env = [
             'PREVIOUS_COMMIT' => $payload->getData('before'),
             'CURRENT_COMMIT' => $payload->getData('after'),
@@ -145,7 +145,7 @@ class GitlabController extends Controller
         if (fnGet($project, 'gitlab-token') != $token) {
             return null;
         }
-        $project['id'] = $projectId;
+        $project['project_id'] = $projectId;
         return Payload::create($project);
     }
 
