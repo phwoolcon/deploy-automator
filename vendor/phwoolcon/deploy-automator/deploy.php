@@ -74,7 +74,7 @@ task('git:changes', function () {
         run("git pull origin {{branch}} --rebase", ['tty' => true]);
     }
     if ($lastRef) {
-        run($gitLog = "git log --pretty=format:'%C(green)%h%C(reset) [%C(yellow)%ci%C(reset)] - " .
+        run($gitLog = "git --no-pager log --pretty=format:'%C(green)%h%C(reset) [%C(yellow)%ci%C(reset)] - " .
             "%an <%ae>%n%C(bold blue)%s%C(reset)%n%w(0,2,2)%b%n' {$lastRef}..HEAD", ['tty' => true]);
         $changes = run($gitLog)->getOutput();
         if (!trim($changes)) {

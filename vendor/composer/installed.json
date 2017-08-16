@@ -331,18 +331,18 @@
         "source": {
             "type": "git",
             "url": "https://github.com/phwoolcon/deploy-automator.git",
-            "reference": "1181e7270d5303cc37be10ba0dbeaf8475f8a55d"
+            "reference": "867bfb28c5b61beaeadc4c43745f8d4455244c0f"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/phwoolcon/deploy-automator/zipball/1181e7270d5303cc37be10ba0dbeaf8475f8a55d",
-            "reference": "1181e7270d5303cc37be10ba0dbeaf8475f8a55d",
+            "url": "https://api.github.com/repos/phwoolcon/deploy-automator/zipball/867bfb28c5b61beaeadc4c43745f8d4455244c0f",
+            "reference": "867bfb28c5b61beaeadc4c43745f8d4455244c0f",
             "shasum": ""
         },
         "require": {
             "deployer/recipes": "dev-master"
         },
-        "time": "2017-08-16T10:40:23+00:00",
+        "time": "2017-08-16T11:49:57+00:00",
         "bin": [
             "bin/deploy"
         ],
