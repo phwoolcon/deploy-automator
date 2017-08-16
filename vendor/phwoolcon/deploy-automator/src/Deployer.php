@@ -4,6 +4,8 @@ namespace Phwoolcon\DeployAutomator;
 
 use Config;
 use Phalcon\Di;
+use Phwoolcon\DeployAutomator\Model\Project;
+use Phwoolcon\Exception\QueueException;
 use Phwoolcon\Payload;
 use Phwoolcon\Queue\Adapter\DbQueue;
 use Queue;
@@ -50,7 +52,7 @@ class Deployer
     }
 
     /**
-     * @param Payload $project
+     * @param Project $project
      * @param Payload $payload
      */
     public function deploy($project, $payload)
@@ -63,12 +65,18 @@ class Deployer
         foreach ((array)$payload->getData('env') as $k => $v) {
             putenv("{$k}={$v}");
         }
+        $deployScript = escapeshellcmd($project->getExtraData('deploy_script') ?:
+            'dep -v local:prepare prepare && dep -vvv deploy production');
+        putenv("DEPLOY_SCRIPT={$deployScript}");
         $workspace = escapeshellarg($workspace);
-        system("{$command} {$workspace} > /dev/null 2>&1");
+        exec("{$command} {$workspace} > /dev/null 2>&1", $output, $exitCode);
+        if ($exitCode) {
+            throw new QueueException("Deploy error on project '{$project->getProjectId()}'", $exitCode);
+        }
     }
 
     /**
-     * @param Payload $project
+     * @param Project $project
      * @param Payload $payload
      * @return $this
      */

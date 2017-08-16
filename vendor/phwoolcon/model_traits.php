@@ -107,3 +107,115 @@ trait MigrationsModelTrait
         return $this;
     }
 }
+
+trait ProjectsModelTrait
+{
+    // protected $_table = 'projects';
+
+    public $id;
+    public $project_id;
+    public $gitlab_token;
+    public $github_token;
+    public $repository;
+    public $branch;
+    public $extra_data;
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function setId($id)
+    {
+        $this->id = $id;
+        return $this;
+    }
+
+    /**
+     * @param $id
+     * @return static[]|\Phalcon\Mvc\Model\Resultset\Simple
+     */
+    public static function findById($id)
+    {
+        return static::findSimple([
+            'id' => $id,
+        ]);
+    }
+
+    /**
+     * @param $id
+     * @return static|false
+     */
+    public static function findFirstById($id)
+    {
+        return static::findFirstSimple([
+            'id' => $id,
+        ]);
+    }
+
+    public function getProjectId()
+    {
+        return $this->project_id;
+    }
+
+    public function setProjectId($projectId)
+    {
+        $this->project_id = $projectId;
+        return $this;
+    }
+
+    public function getGitlabToken()
+    {
+        return $this->gitlab_token;
+    }
+
+    public function setGitlabToken($gitlabToken)
+    {
+        $this->gitlab_token = $gitlabToken;
+        return $this;
+    }
+
+    public function getGithubToken()
+    {
+        return $this->github_token;
+    }
+
+    public function setGithubToken($githubToken)
+    {
+        $this->github_token = $githubToken;
+        return $this;
+    }
+
+    public function getRepository()
+    {
+        return $this->repository;
+    }
+
+    public function setRepository($repository)
+    {
+        $this->repository = $repository;
+        return $this;
+    }
+
+    public function getBranch()
+    {
+        return $this->branch;
+    }
+
+    public function setBranch($branch)
+    {
+        $this->branch = $branch;
+        return $this;
+    }
+
+    public function getExtraData()
+    {
+        return $this->extra_data;
+    }
+
+    public function setExtraData($extraData)
+    {
+        $this->extra_data = $extraData;
+        return $this;
+    }
+}

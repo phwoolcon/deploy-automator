@@ -2,9 +2,9 @@
 
 namespace Phwoolcon\DeployAutomator\Controllers\Webhooks;
 
-use Config;
 use Phwoolcon\Controller;
 use Phwoolcon\DeployAutomator\Deployer;
+use Phwoolcon\DeployAutomator\Model\Project;
 use Phwoolcon\Payload;
 
 class GitlabController extends Controller
@@ -110,19 +110,19 @@ class GitlabController extends Controller
 
         $payload = $this->parseJsonPayload($this->getPhpInput());
         if ('push' != $payload->getData('object_kind')) {
-            $this->jsonApiReturnMeta(['status' => 'ignored']);
+            return $this->jsonApiReturnMeta(['status' => 'ignored', 'why' => 'Not push event']);
         }
 
         // Verify branch
-        $branch = $project->getData('branch');
+        $branch = $project->getBranch();
         $ref = "refs/heads/{$branch}";
 
         // Skip non-listening branches
         if ($ref != $payload->getData('ref')) {
-            $this->jsonApiReturnMeta(['status' => 'ignored']);
+            return $this->jsonApiReturnMeta(['status' => 'ignored', 'why' => 'Branch not match']);
         }
         $workspace = $this->getWorkspace();
-        $payload->setData('workspace', $workspace . '/' . $project->getData('id'));
+        $payload->setData('workspace', $workspace . '/' . $project->getProjectId());
         $env = [
             'PREVIOUS_COMMIT' => $payload->getData('before'),
             'CURRENT_COMMIT' => $payload->getData('after'),
@@ -130,7 +130,7 @@ class GitlabController extends Controller
         ];
         $payload->setData('env', $env);
         $this->createDeployment($project, $payload);
-        $this->jsonApiReturnMeta(['status' => 'ok']);
+        return $this->jsonApiReturnMeta(['status' => 'ok']);
     }
 
     protected function findAndVerifyProject($projectId, $token)
@@ -138,15 +138,14 @@ class GitlabController extends Controller
         if (empty($projectId) || empty($token)) {
             return null;
         }
-        // TODO implement project model and project management UI
-        if (!$project = Config::get('deploy.projects.' . str_replace('.', '_', $projectId))) {
+        // TODO implement project management UI
+        if (!$project = Project::findFirstSimple(['project_id' => $projectId])) {
             return null;
         }
-        if (fnGet($project, 'gitlab-token') != $token) {
+        if ($project->getGitlabToken() != $token) {
             return null;
         }
-        $project['id'] = $projectId;
-        return Payload::create($project);
+        return $project;
     }
 
     protected function parseJsonPayload($input)

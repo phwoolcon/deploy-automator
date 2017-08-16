@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/deployphp/recipes.git",
-                "reference": "82b708689e180275d31f37c0baab6ec71ed7ef06"
+                "reference": "55a8b4f74a1d639a699f7a577185738e8b278010"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/deployphp/recipes/82b708689e180275d31f37c0baab6ec71ed7ef06.zip",
-                "reference": "82b708689e180275d31f37c0baab6ec71ed7ef06",
+                "url": "https://api.github.com/repos/deployphp/recipes/zipball/55a8b4f74a1d639a699f7a577185738e8b278010",
+                "reference": "55a8b4f74a1d639a699f7a577185738e8b278010",
                 "shasum": ""
             },
             "replace": {
@@ -55,7 +55,7 @@
                 "slack",
                 "yarn"
             ],
-            "time": "2017-08-08T17:27:20+00:00"
+            "time": "2017-08-13T16:43:35+00:00"
         },
         {
             "name": "opis/closure",
@@ -67,7 +67,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/opis/closure/bd9055ac7c4f6cdaecddb187d32b814f6d1a3c84.zip",
+                "url": "https://api.github.com/repos/opis/closure/zipball/bd9055ac7c4f6cdaecddb187d32b814f6d1a3c84",
                 "reference": "bd9055ac7c4f6cdaecddb187d32b814f6d1a3c84",
                 "shasum": ""
             },
@@ -121,7 +121,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/pda/pheanstalk/430e77c551479aad0c6ada0450ee844cf656a18b.zip",
+                "url": "https://api.github.com/repos/pda/pheanstalk/zipball/430e77c551479aad0c6ada0450ee844cf656a18b",
                 "reference": "430e77c551479aad0c6ada0450ee844cf656a18b",
                 "shasum": ""
             },
@@ -167,12 +167,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phwoolcon/deploy-automator.git",
-                "reference": "aa248b5e50d2dd9bd26edf36d87c3d0ea2d23f53"
+                "reference": "1181e7270d5303cc37be10ba0dbeaf8475f8a55d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/phwoolcon/deploy-automator/aa248b5e50d2dd9bd26edf36d87c3d0ea2d23f53.zip",
-                "reference": "aa248b5e50d2dd9bd26edf36d87c3d0ea2d23f53",
+                "url": "https://api.github.com/repos/phwoolcon/deploy-automator/zipball/1181e7270d5303cc37be10ba0dbeaf8475f8a55d",
+                "reference": "1181e7270d5303cc37be10ba0dbeaf8475f8a55d",
                 "shasum": ""
             },
             "require": {
@@ -211,7 +211,7 @@
                 "deployer",
                 "phwoolcon"
             ],
-            "time": "2017-08-10T13:18:25+00:00"
+            "time": "2017-08-16T10:40:23+00:00"
         },
         {
             "name": "phwoolcon/fsm",
@@ -223,7 +223,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/phwoolcon/fsm/cfe9154473e8e1b967dd2896e47aeaa1d838ed7b.zip",
+                "url": "https://api.github.com/repos/phwoolcon/fsm/zipball/cfe9154473e8e1b967dd2896e47aeaa1d838ed7b",
                 "reference": "cfe9154473e8e1b967dd2896e47aeaa1d838ed7b",
                 "shasum": ""
             },
@@ -261,16 +261,16 @@
         },
         {
             "name": "phwoolcon/phwoolcon",
-            "version": "v1.0.1",
+            "version": "v1.0.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phwoolcon/phwoolcon.git",
-                "reference": "ae9f5511b1683cddd4f6e87edd5ad7163aeda069"
+                "reference": "49fac02e5e1cd11a8df66436ecd73c5f37a335cb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/phwoolcon/phwoolcon/ae9f5511b1683cddd4f6e87edd5ad7163aeda069.zip",
-                "reference": "ae9f5511b1683cddd4f6e87edd5ad7163aeda069",
+                "url": "https://api.github.com/repos/phwoolcon/phwoolcon/zipball/49fac02e5e1cd11a8df66436ecd73c5f37a335cb",
+                "reference": "49fac02e5e1cd11a8df66436ecd73c5f37a335cb",
                 "shasum": ""
             },
             "require": {
@@ -329,7 +329,7 @@
                 "phwoolcon",
                 "swoole"
             ],
-            "time": "2017-08-10T11:08:59+00:00"
+            "time": "2017-08-15T12:27:47+00:00"
         },
         {
             "name": "sensiolabs/ansi-to-html",
@@ -341,7 +341,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/sensiolabs/ansi-to-html/8b5d787dca714bd98dd770c078d76528320a8286.zip",
+                "url": "https://api.github.com/repos/sensiolabs/ansi-to-html/zipball/8b5d787dca714bd98dd770c078d76528320a8286",
                 "reference": "8b5d787dca714bd98dd770c078d76528320a8286",
                 "shasum": ""
             },
@@ -385,7 +385,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/swiftmailer/swiftmailer/9a06dc570a0367850280eefd3f1dc2da45aef517.zip",
+                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/9a06dc570a0367850280eefd3f1dc2da45aef517",
                 "reference": "9a06dc570a0367850280eefd3f1dc2da45aef517",
                 "shasum": ""
             },
@@ -439,7 +439,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/symfony/console/926061e74229e935d3c5b4e9ba87237316c6693f.zip",
+                "url": "https://api.github.com/repos/symfony/console/zipball/926061e74229e935d3c5b4e9ba87237316c6693f",
                 "reference": "926061e74229e935d3c5b4e9ba87237316c6693f",
                 "shasum": ""
             },
@@ -491,16 +491,16 @@
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "v1.4.0",
+            "version": "v1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
-                "reference": "f29dca382a6485c3cbe6379f0c61230167681937"
+                "reference": "7c8fae0ac1d216eb54349e6a8baa57d515fe8803"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/symfony/polyfill-mbstring/f29dca382a6485c3cbe6379f0c61230167681937.zip",
-                "reference": "f29dca382a6485c3cbe6379f0c61230167681937",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/7c8fae0ac1d216eb54349e6a8baa57d515fe8803",
+                "reference": "7c8fae0ac1d216eb54349e6a8baa57d515fe8803",
                 "shasum": ""
             },
             "require": {
@@ -512,7 +512,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.4-dev"
+                    "dev-master": "1.5-dev"
                 }
             },
             "autoload": {
@@ -546,7 +546,7 @@
                 "portable",
                 "shim"
             ],
-            "time": "2017-06-09T14:24:12+00:00"
+            "time": "2017-06-14T15:44:48+00:00"
         },
         {
             "name": "wikimedia/composer-merge-plugin",
@@ -558,7 +558,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/wikimedia/composer-merge-plugin/81c6ac72a24a67383419c7eb9aa2b3437f2ab100.zip",
+                "url": "https://api.github.com/repos/wikimedia/composer-merge-plugin/zipball/81c6ac72a24a67383419c7eb9aa2b3437f2ab100",
                 "reference": "81c6ac72a24a67383419c7eb9aa2b3437f2ab100",
                 "shasum": ""
             },
