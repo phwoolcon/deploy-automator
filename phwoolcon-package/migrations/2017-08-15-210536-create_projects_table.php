@@ -21,7 +21,14 @@ return [
                 new Column('project_id', [
                     'type' => Column::TYPE_VARCHAR,
                     'size' => 16,
-                    'notNull' => false,
+                    'notNull' => true,
+                    'default' => '',
+                ]),
+                new Column('project_name', [
+                    'type' => Column::TYPE_VARCHAR,
+                    'size' => 255,
+                    'notNull' => true,
+                    'default' => '',
                 ]),
                 new Column('gitlab_token', [
                     'type' => Column::TYPE_VARCHAR,
@@ -51,6 +58,10 @@ return [
                     'type' => Column::TYPE_TEXT,
                     'notNull' => false,
                 ]),
+            ],
+            'indexes' => [
+                new Index('project_id', ['project_id'], 'UNIQUE'),
+                new Index('repository', ['repository']),
             ],
             'options' => [
                 'TABLE_COLLATION' => $migrate->getDefaultTableCharset(),
