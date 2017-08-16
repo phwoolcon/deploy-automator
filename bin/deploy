@@ -27,8 +27,12 @@ fi
 
 LOG_FILE=${LOGS_DIR}/${DEPLOY_ID}.log
 
+if [[ -z ${DEPLOY_SCRIPT} ]]; then
+    DEPLOY_SCRIPT="dep -v local:prepare prepare && dep -vvv deploy production"
+fi
+
 # Run the deployment and write all TTY outputs to log file
-script -faqec 'dep -v local:prepare prepare && dep -vvv deploy production' "${LOG_FILE}"
+script -faqec "${DEPLOY_SCRIPT}" "${LOG_FILE}"
 
 # Unlock the workspace no matter success or not
 dep deploy:unlock prepare > /dev/null

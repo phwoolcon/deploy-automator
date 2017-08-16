@@ -19,4 +19,9 @@ class Project extends Model
         } while (static::findFirstSimple(['project_id' => $id]));
         return $id;
     }
+
+    public function getExtraData($key = null, $default = null)
+    {
+        return $key === null ? $this->extra_data : fnGet($this->extra_data, $key, $default);
+    }
 }

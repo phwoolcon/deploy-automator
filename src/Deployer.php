@@ -65,6 +65,9 @@ class Deployer
         foreach ((array)$payload->getData('env') as $k => $v) {
             putenv("{$k}={$v}");
         }
+        $deployScript = escapeshellcmd($project->getExtraData('deploy_script') ?:
+            'dep -v local:prepare prepare && dep -vvv deploy production');
+        putenv("DEPLOY_SCRIPT={$deployScript}");
         $workspace = escapeshellarg($workspace);
         exec("{$command} {$workspace} > /dev/null 2>&1", $output, $exitCode);
         if ($exitCode) {
