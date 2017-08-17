@@ -9,5 +9,6 @@ return array(
     '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => $vendorDir . '/symfony/polyfill-mbstring/bootstrap.php',
     '2c102faa651ef8ea5874edb585946bce' => $vendorDir . '/swiftmailer/swiftmailer/lib/swift_required.php',
     'eb7e98e63c68d07fafdbd92bdcaa497e' => $vendorDir . '/deployer/recipes/autoload.php',
+    '59739098463fce574850c6d14e3b8aef' => $vendorDir . '/phwoolcon/deploy-automator/set-include-path.php',
     '9fd1f7bceb3434f08dec5c5d4051b97f' => $vendorDir . '/phwoolcon/phwoolcon/functions.php',
 );

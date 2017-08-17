@@ -31,8 +31,11 @@ if [[ -z ${DEPLOY_SCRIPT} ]]; then
     DEPLOY_SCRIPT="dep -v local:prepare prepare && dep -vvv deploy production"
 fi
 
+EXIT_CODE=0
 # Run the deployment and write all TTY outputs to log file
-script -faqec "${DEPLOY_SCRIPT}" "${LOG_FILE}"
+script -faqec "${DEPLOY_SCRIPT}" "${LOG_FILE}" || EXIT_CODE=$?
 
 # Unlock the workspace no matter success or not
 dep deploy:unlock prepare > /dev/null
+
+exit ${EXIT_CODE}

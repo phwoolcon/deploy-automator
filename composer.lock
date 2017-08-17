@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/deployphp/recipes.git",
-                "reference": "55a8b4f74a1d639a699f7a577185738e8b278010"
+                "reference": "8cf9e7eab3c83dd53d7eebb15f1b62baf355114b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/deployphp/recipes/zipball/55a8b4f74a1d639a699f7a577185738e8b278010",
-                "reference": "55a8b4f74a1d639a699f7a577185738e8b278010",
+                "url": "https://api.github.com/repos/deployphp/recipes/zipball/8cf9e7eab3c83dd53d7eebb15f1b62baf355114b",
+                "reference": "8cf9e7eab3c83dd53d7eebb15f1b62baf355114b",
                 "shasum": ""
             },
             "replace": {
@@ -55,7 +55,7 @@
                 "slack",
                 "yarn"
             ],
-            "time": "2017-08-13T16:43:35+00:00"
+            "time": "2017-08-17T06:44:39+00:00"
         },
         {
             "name": "opis/closure",
@@ -167,12 +167,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phwoolcon/deploy-automator.git",
-                "reference": "867bfb28c5b61beaeadc4c43745f8d4455244c0f"
+                "reference": "7648b046fbf6b2a26529163c3959f09c299ede1a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phwoolcon/deploy-automator/zipball/867bfb28c5b61beaeadc4c43745f8d4455244c0f",
-                "reference": "867bfb28c5b61beaeadc4c43745f8d4455244c0f",
+                "url": "https://api.github.com/repos/phwoolcon/deploy-automator/zipball/7648b046fbf6b2a26529163c3959f09c299ede1a",
+                "reference": "7648b046fbf6b2a26529163c3959f09c299ede1a",
                 "shasum": ""
             },
             "require": {
@@ -188,6 +188,9 @@
                 }
             },
             "autoload": {
+                "files": [
+                    "set-include-path.php"
+                ],
                 "psr-4": {
                     "Phwoolcon\\DeployAutomator\\": "src",
                     "Phwoolcon\\DeployAutomator\\Tests\\": "tests"
@@ -211,7 +214,7 @@
                 "deployer",
                 "phwoolcon"
             ],
-            "time": "2017-08-16T11:49:57+00:00"
+            "time": "2017-08-17T13:24:33+00:00"
         },
         {
             "name": "phwoolcon/fsm",

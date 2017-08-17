@@ -7,21 +7,16 @@
 
 namespace Deployer;
 
-use Deployer\Utility\Request;
+use Deployer\Utility\Httpie;
 
 // Title of project
 set('slack_title', function () {
     return get('application', 'Project');
 });
 
-// Name of stage or host where deploying
-set('slack_target', function () {
-    return input()->getArgument('stage') ?: get('hostname');
-});
-
 // Deploy message
-set('slack_text', '_{{user}}_ deploying `{{branch}}` to *{{slack_target}}*');
-set('slack_success_text', 'Deploy to *{{slack_target}}* successful');
+set('slack_text', '_{{user}}_ deploying `{{branch}}` to *{{target}}*');
+set('slack_success_text', 'Deploy to *{{target}}* successful');
 
 // Color of attachment
 set('slack_color', '#4d91f7');
@@ -40,7 +35,7 @@ task('slack:notify', function () {
         'mrkdwn_in' => ['text'],
     ];
 
-    Request::post(get('slack_webhook'), ['attachments' => [$attachment]]);
+    Httpie::post(get('slack_webhook'))->body(['attachments' => [$attachment]])->send();
 })
     ->once()
     ->shallow()
@@ -59,7 +54,7 @@ task('slack:notify:success', function () {
         'mrkdwn_in' => ['text'],
     ];
 
-    Request::post(get('slack_webhook'), ['attachments' => [$attachment]]);
+    Httpie::post(get('slack_webhook'))->body(['attachments' => [$attachment]])->send();
 })
     ->once()
     ->shallow()
