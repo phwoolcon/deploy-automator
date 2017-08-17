@@ -16,6 +16,9 @@
         "deployer/recipes": "dev-master"
     },
     "autoload": {
+        "files": [
+            "set-include-path.php"
+        ],
         "psr-4": {
             "Phwoolcon\\DeployAutomator\\": "src",
             "Phwoolcon\\DeployAutomator\\Tests\\": "tests"
