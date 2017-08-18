@@ -5,6 +5,6 @@ define('WORKSPACE', empty($_SERVER['WORKSPACE']) ? BASE_DIR . '/workspace' : $_S
 
 require BASE_DIR . '/vendor/autoload.php';
 
-$recipe = empty($_SERVER['RECIPE']) ?: 'recipe/phwoolcon.php';
+$recipe = empty($_SERVER['RECIPE']) ? 'recipe/phwoolcon.php' : $_SERVER['RECIPE'];
 
 require $recipe;

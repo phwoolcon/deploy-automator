@@ -167,12 +167,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phwoolcon/deploy-automator.git",
-                "reference": "7648b046fbf6b2a26529163c3959f09c299ede1a"
+                "reference": "1efc78e9063dade8de893b0f3d61c7508221fa61"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phwoolcon/deploy-automator/zipball/7648b046fbf6b2a26529163c3959f09c299ede1a",
-                "reference": "7648b046fbf6b2a26529163c3959f09c299ede1a",
+                "url": "https://api.github.com/repos/phwoolcon/deploy-automator/zipball/1efc78e9063dade8de893b0f3d61c7508221fa61",
+                "reference": "1efc78e9063dade8de893b0f3d61c7508221fa61",
                 "shasum": ""
             },
             "require": {
@@ -214,7 +214,7 @@
                 "deployer",
                 "phwoolcon"
             ],
-            "time": "2017-08-17T13:24:33+00:00"
+            "time": "2017-08-17T13:35:27+00:00"
         },
         {
             "name": "phwoolcon/fsm",
