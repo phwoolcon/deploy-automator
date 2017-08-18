@@ -4,7 +4,6 @@ namespace Phwoolcon\DeployAutomator\Controllers\Webhooks;
 
 use Phwoolcon\Controller;
 use Phwoolcon\DeployAutomator\Controllers\WebhookTrait;
-use Phwoolcon\DeployAutomator\Model\Project;
 
 class GitlabController extends Controller
 {
@@ -41,7 +40,7 @@ class GitlabController extends Controller
          * @see example/webhook-samples/gitlab.json
          * @see https://gitlab.com/help/user/project/integrations/webhooks
          */
-        $payload = $this->parseJsonPayload($this->getPhpInput());
+        $payload = $this->parseJsonPayload($this->getRawPhpInput());
         if ('push' != $payload->getData('object_kind')) {
             return $this->jsonApiReturnMeta(['status' => 'ignored', 'why' => 'Not push event']);
         }
@@ -71,23 +70,12 @@ class GitlabController extends Controller
         if (empty($projectId) || empty($token)) {
             return null;
         }
-        // TODO implement project management UI
-        if (!$project = Project::findFirstSimple(['project_id' => $projectId])) {
+        if (!$project = $this->findProject($projectId)) {
             return null;
         }
         if ($project->getGitlabToken() != $token) {
             return null;
         }
         return $project;
-    }
-
-    /**
-     * Q: Why make the `php://input` encapsulation?
-     * A: I want to use it in service mode, which is impossible to pass data via `php://input` between processes
-     * @return string
-     */
-    protected function getPhpInput()
-    {
-        return file_get_contents('php://input');
     }
 }

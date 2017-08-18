@@ -3,6 +3,7 @@
 namespace Phwoolcon\DeployAutomator\Controllers;
 
 use Phwoolcon\DeployAutomator\Deployer;
+use Phwoolcon\DeployAutomator\Model\Project;
 use Phwoolcon\Payload;
 
 trait WebhookTrait
@@ -17,6 +18,15 @@ trait WebhookTrait
         $this->deployer or $this->deployer = Deployer::getInstance();
         $this->deployer->queueJob($project, $payload);
         return $this;
+    }
+
+    /**
+     * @param $projectId
+     * @return false|Project
+     */
+    protected function findProject($projectId)
+    {
+        return Project::findFirstByProjectId($projectId);
     }
 
     protected function getWorkspace()
