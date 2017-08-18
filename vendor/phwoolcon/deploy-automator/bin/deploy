@@ -21,6 +21,12 @@ if [[ ! -d ${LOGS_DIR} ]]; then
     mkdir -p "${LOGS_DIR}"
 fi
 
+if [[ -f ${BASE_DIR}/deploy.php ]]; then
+    cp ${BASE_DIR}/deploy.php ${WORKSPACE}/
+elif [[ -f ${BASE_DIR}/vendor/phwoolcon/deploy-automator/deploy.php ]]; then
+    cp ${BASE_DIR}/vendor/phwoolcon/deploy-automator/deploy.php ${WORKSPACE}/
+fi
+
 if [[ -z ${DEPLOY_ID} ]]; then
     DEPLOY_ID=$(date +"%Y%m%d-%H%M%S")
 fi
@@ -34,6 +40,8 @@ fi
 EXIT_CODE=0
 # Run the deployment and write all TTY outputs to log file
 script -faqec "${DEPLOY_SCRIPT}" "${LOG_FILE}" || EXIT_CODE=$?
+
+echo '' >> "${LOG_FILE}"
 
 # Unlock the workspace no matter success or not
 dep deploy:unlock prepare > /dev/null

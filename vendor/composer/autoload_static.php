@@ -186,6 +186,8 @@ class ComposerStaticInitc53ce0e576964c331c1ef17a31fe24bd
         'Phwoolcon\\DateTime' => __DIR__ . '/..' . '/phwoolcon/phwoolcon/src/DateTime.php',
         'Phwoolcon\\Db' => __DIR__ . '/..' . '/phwoolcon/phwoolcon/src/Db.php',
         'Phwoolcon\\Db\\Adapter\\Pdo\\Mysql' => __DIR__ . '/..' . '/phwoolcon/phwoolcon/src/Db/Adapter/Pdo/Mysql.php',
+        'Phwoolcon\\DeployAutomator\\Controllers\\WebhookTrait' => __DIR__ . '/..' . '/phwoolcon/deploy-automator/src/Controllers/WebhookTrait.php',
+        'Phwoolcon\\DeployAutomator\\Controllers\\Webhooks\\GitHubController' => __DIR__ . '/..' . '/phwoolcon/deploy-automator/src/Controllers/Webhooks/GitHubController.php',
         'Phwoolcon\\DeployAutomator\\Controllers\\Webhooks\\GitlabController' => __DIR__ . '/..' . '/phwoolcon/deploy-automator/src/Controllers/Webhooks/GitlabController.php',
         'Phwoolcon\\DeployAutomator\\Deployer' => __DIR__ . '/..' . '/phwoolcon/deploy-automator/src/Deployer.php',
         'Phwoolcon\\DeployAutomator\\Model\\Project' => __DIR__ . '/..' . '/phwoolcon/deploy-automator/src/Model/Project.php',

@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/deployphp/recipes.git",
-                "reference": "8cf9e7eab3c83dd53d7eebb15f1b62baf355114b"
+                "reference": "0e9dcba1c991b9bbd8aeaae24ce09bb2efc41df8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/deployphp/recipes/zipball/8cf9e7eab3c83dd53d7eebb15f1b62baf355114b",
-                "reference": "8cf9e7eab3c83dd53d7eebb15f1b62baf355114b",
+                "url": "https://api.github.com/repos/deployphp/recipes/zipball/0e9dcba1c991b9bbd8aeaae24ce09bb2efc41df8",
+                "reference": "0e9dcba1c991b9bbd8aeaae24ce09bb2efc41df8",
                 "shasum": ""
             },
             "replace": {
@@ -55,7 +55,7 @@
                 "slack",
                 "yarn"
             ],
-            "time": "2017-08-17T06:44:39+00:00"
+            "time": "2017-08-18T13:38:18+00:00"
         },
         {
             "name": "opis/closure",
@@ -167,12 +167,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phwoolcon/deploy-automator.git",
-                "reference": "1efc78e9063dade8de893b0f3d61c7508221fa61"
+                "reference": "c485bc92d0608278d5e914729e1bc6a32ba57d4c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phwoolcon/deploy-automator/zipball/1efc78e9063dade8de893b0f3d61c7508221fa61",
-                "reference": "1efc78e9063dade8de893b0f3d61c7508221fa61",
+                "url": "https://api.github.com/repos/phwoolcon/deploy-automator/zipball/c485bc92d0608278d5e914729e1bc6a32ba57d4c",
+                "reference": "c485bc92d0608278d5e914729e1bc6a32ba57d4c",
                 "shasum": ""
             },
             "require": {
@@ -214,7 +214,7 @@
                 "deployer",
                 "phwoolcon"
             ],
-            "time": "2017-08-17T13:35:27+00:00"
+            "time": "2017-08-18T13:41:14+00:00"
         },
         {
             "name": "phwoolcon/fsm",
@@ -264,16 +264,16 @@
         },
         {
             "name": "phwoolcon/phwoolcon",
-            "version": "v1.0.2.1",
+            "version": "v1.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phwoolcon/phwoolcon.git",
-                "reference": "49fac02e5e1cd11a8df66436ecd73c5f37a335cb"
+                "reference": "bf6c1ca482df7d84169e1119a6162b6d0c588b34"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phwoolcon/phwoolcon/zipball/49fac02e5e1cd11a8df66436ecd73c5f37a335cb",
-                "reference": "49fac02e5e1cd11a8df66436ecd73c5f37a335cb",
+                "url": "https://api.github.com/repos/phwoolcon/phwoolcon/zipball/bf6c1ca482df7d84169e1119a6162b6d0c588b34",
+                "reference": "bf6c1ca482df7d84169e1119a6162b6d0c588b34",
                 "shasum": ""
             },
             "require": {
@@ -332,7 +332,7 @@
                 "phwoolcon",
                 "swoole"
             ],
-            "time": "2017-08-15T12:27:47+00:00"
+            "time": "2017-08-18T13:33:31+00:00"
         },
         {
             "name": "sensiolabs/ansi-to-html",

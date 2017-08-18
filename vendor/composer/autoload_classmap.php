@@ -91,6 +91,8 @@ return array(
     'Phwoolcon\\DateTime' => $vendorDir . '/phwoolcon/phwoolcon/src/DateTime.php',
     'Phwoolcon\\Db' => $vendorDir . '/phwoolcon/phwoolcon/src/Db.php',
     'Phwoolcon\\Db\\Adapter\\Pdo\\Mysql' => $vendorDir . '/phwoolcon/phwoolcon/src/Db/Adapter/Pdo/Mysql.php',
+    'Phwoolcon\\DeployAutomator\\Controllers\\WebhookTrait' => $vendorDir . '/phwoolcon/deploy-automator/src/Controllers/WebhookTrait.php',
+    'Phwoolcon\\DeployAutomator\\Controllers\\Webhooks\\GitHubController' => $vendorDir . '/phwoolcon/deploy-automator/src/Controllers/Webhooks/GitHubController.php',
     'Phwoolcon\\DeployAutomator\\Controllers\\Webhooks\\GitlabController' => $vendorDir . '/phwoolcon/deploy-automator/src/Controllers/Webhooks/GitlabController.php',
     'Phwoolcon\\DeployAutomator\\Deployer' => $vendorDir . '/phwoolcon/deploy-automator/src/Deployer.php',
     'Phwoolcon\\DeployAutomator\\Model\\Project' => $vendorDir . '/phwoolcon/deploy-automator/src/Model/Project.php',
