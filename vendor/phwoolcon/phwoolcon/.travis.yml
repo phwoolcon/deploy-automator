@@ -11,11 +11,12 @@ php:
   - '5.6'
   - '7.0'
   - '7.1'
+  - '7.2'
 
 matrix:
   fast_finish: true
   allow_failures:
-    - php: '7.1'
+    - php: '7.2'
 
 mysql:
   database: phwoolcon_test
@@ -40,20 +41,19 @@ before_install:
   # Disable sendmail
   - echo -e '#!/usr/bin/env bash\nexit 0' | sudo tee /usr/sbin/sendmail
   - echo 'sendmail_path = "/usr/sbin/sendmail -t -i "' > $(php --ini|grep -m 1 "ini files in:"|cut -d ":" -f 2)/sendmail.ini
-  - sudo beanstalkd -d -l 127.0.0.1 -p 11300
+  - sudo service beanstalkd restart
   # Update composer
   - composer self-update
+  - pecl channel-update pecl.php.net
   # Install imagick to pass Phalcon compiling
   - printf "\n" | pecl install imagick
   # Install Swoole
   - pecl install swoole
-  - phpenv config-add php-ext.ini
+  - phpenv config-add tests/travis/php-ext.ini
   # Install Phalcon
   - bin/ci-install-phalcon
   # Install Phwoolcon
   - composer install --prefer-source --no-interaction
-  # Install phpcs
-  - pear install PHP_CodeSniffer
   - phpenv rehash
 
 before_script:
@@ -61,15 +61,16 @@ before_script:
   - composer update --no-interaction --prefer-source
   # Create database
   - mysql -uroot -e 'CREATE DATABASE `phwoolcon_test` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci */;'
+  - mysql -uroot -e "GRANT ALL PRIVILEGES ON *.* TO 'travis'@'%';";
   # Print Phalcon and Swoole info
   - php --ri phalcon
   - php --ri swoole
 
 script:
   # Check code style
-  - phpcs
+  - vendor/bin/phpcs
   # Running unit test
-  - phpunit --verbose --coverage-clover=coverage.xml
+  - phpunit --stderr --verbose --coverage-clover=coverage.xml
 
 after_success:
   # Collect code coverage

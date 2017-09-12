@@ -490,24 +490,23 @@
     },
     {
         "name": "phwoolcon/phwoolcon",
-        "version": "v1.0.3",
-        "version_normalized": "1.0.3.0",
+        "version": "v1.0.7",
+        "version_normalized": "1.0.7.0",
         "source": {
             "type": "git",
             "url": "https://github.com/phwoolcon/phwoolcon.git",
-            "reference": "bf6c1ca482df7d84169e1119a6162b6d0c588b34"
+            "reference": "2b2a1ca0e929697255b94e86e8e30a03de570ff5"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/phwoolcon/phwoolcon/zipball/bf6c1ca482df7d84169e1119a6162b6d0c588b34",
-            "reference": "bf6c1ca482df7d84169e1119a6162b6d0c588b34",
+            "url": "https://files.phpcomposer.com/files/phwoolcon/phwoolcon/2b2a1ca0e929697255b94e86e8e30a03de570ff5.zip",
+            "reference": "2b2a1ca0e929697255b94e86e8e30a03de570ff5",
             "shasum": ""
         },
         "require": {
             "ext-curl": "*",
             "ext-json": "*",
             "ext-mbstring": "*",
-            "ext-mcrypt": "*",
             "ext-openssl": "*",
             "ext-pdo": "*",
             "ext-phalcon": "~3.0",
@@ -518,10 +517,14 @@
             "swiftmailer/swiftmailer": "~5.4.2",
             "symfony/console": "~3.0.0"
         },
+        "require-dev": {
+            "phwoolcon/skeleton": "dev-master",
+            "squizlabs/php_codesniffer": "~3.0"
+        },
         "suggest": {
             "ext-swoole": "~1.8"
         },
-        "time": "2017-08-18T13:33:31+00:00",
+        "time": "2017-09-07T11:58:09+00:00",
         "bin": [
             "bin/update-phwoolcon-package-resource",
             "bin/generate-phpdoc"
@@ -569,18 +572,18 @@
         "source": {
             "type": "git",
             "url": "https://github.com/deployphp/recipes.git",
-            "reference": "0e9dcba1c991b9bbd8aeaae24ce09bb2efc41df8"
+            "reference": "5f462100d2c9a109e119ea390091c1e66d961f74"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/deployphp/recipes/zipball/0e9dcba1c991b9bbd8aeaae24ce09bb2efc41df8",
-            "reference": "0e9dcba1c991b9bbd8aeaae24ce09bb2efc41df8",
+            "url": "https://files.phpcomposer.com/files/deployphp/recipes/5f462100d2c9a109e119ea390091c1e66d961f74.zip",
+            "reference": "5f462100d2c9a109e119ea390091c1e66d961f74",
             "shasum": ""
         },
         "replace": {
             "deployer/recipes": "self.version"
         },
-        "time": "2017-08-18T13:38:18+00:00",
+        "time": "2017-08-24T13:39:08+00:00",
         "type": "library",
         "installation-source": "source",
         "autoload": {
