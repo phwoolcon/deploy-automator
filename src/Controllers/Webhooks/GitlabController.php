@@ -2,6 +2,7 @@
 
 namespace Phwoolcon\DeployAutomator\Controllers\Webhooks;
 
+use Log;
 use Phwoolcon\Controller;
 use Phwoolcon\DeployAutomator\Controllers\WebhookTrait;
 
@@ -33,6 +34,9 @@ class GitlabController extends Controller
         // Verify project
         if (!$project = $this->findAndVerifyProject($projectId, $token)) {
             // Return 404 if project not found, or token mismatch
+            if ($projectId && $token) {
+                Log::debug("Gitlab push error: Invalid project: {$projectId} token: {$token}");
+            }
             $this->missingMethod();
         }
 
